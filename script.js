@@ -1,8 +1,6 @@
 let transactions = [];
 let monthlyBudget = 0;
 
-
-// Add a transaction
 function addTransaction() {
 
     const description =
@@ -14,24 +12,12 @@ function addTransaction() {
     const type =
         document.getElementById("type").value;
 
-    if (!description && amount <= 0) {
-        alert(
-            "Please enter a transaction description and an amount greater than zero."
-        );
-        return;
-    }
+    if (!description || amount <= 0) {
 
-    if (!description) {
         alert(
-            "Please enter a transaction description."
+            "Please enter a description and a valid amount greater than zero."
         );
-        return;
-    }
 
-    if (amount <= 0) {
-        alert(
-            "Please enter an amount greater than zero."
-        );
         return;
     }
 
@@ -47,15 +33,15 @@ function addTransaction() {
     updateDashboard();
 }
 
-
-// Set monthly budget
 function setBudget() {
 
     const budget =
         Number(document.getElementById("budget").value);
 
     if (budget <= 0) {
+
         alert("Please enter a valid monthly budget.");
+
         return;
     }
 
@@ -67,8 +53,6 @@ function setBudget() {
     document.getElementById("budget").value = "";
 }
 
-
-// Update dashboard
 function updateDashboard() {
 
     let income = 0;
